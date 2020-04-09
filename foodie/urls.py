@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^restaurant/meal/edit/(?P<meal_id>\d+)/$', views.restaurant_edit_meal, name='restaurant-edit-meal'),
     url(r'^restaurant/order/$', views.restaurant_order, name='restaurant-order'),
     url(r'^restaurant/report/$', views.restaurant_report, name='restaurant-report'),
+    url(r'^api/restaurant/order/notification/(?P<last_request_time>.+)/$', apis.restaurant_order_notification),
 
     # APIs for CUSTOMERS
     url(r'^api/customer/restaurants/$', apis.customer_get_restaurants),
