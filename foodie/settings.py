@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'foodieapp',
     'bootstrap3',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 
 ]
 
@@ -139,5 +141,19 @@ DATABASES['default'].update(db_from_env)
 #    'rest_framework_social_oauth2.backends.DjangoOAuth2',
 #    'django.contrib.auth.backends.ModelBackend',
 # )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+REST_USE_JWT = True
+AUTH_USER_MODEL = "foodieapp.User" 
 
 STRIPE_API_KEY = 'sk_test_vBLAUomv7lb32iEaxkP4fiQk'

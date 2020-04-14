@@ -1,8 +1,19 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
+from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 from django.utils import timezone
 
 # Create your models here.
+class User(AbstractUser):
+    username = models.CharField( max_length=55 ,blank=True, null=True)
+    email = models.EmailField(_('email address'), unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+
+    def __str__(self):
+        return "{}".format(self.email)
+
 class Restaurant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='restaurant')
     name = models.CharField(max_length=500)

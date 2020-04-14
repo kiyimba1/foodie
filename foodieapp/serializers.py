@@ -1,11 +1,6 @@
 from rest_framework import serializers
 
-from foodieapp.models import Restaurant, \
-    Meal, \
-    Customer, \
-    Driver, \
-    Order, \
-    OrderDetails
+from foodieapp.models import Restaurant, Meal, Customer, Driver, Order, OrderDetails
 
 class RestaurantSerializer(serializers.ModelSerializer):
     logo = serializers.SerializerMethodField()

@@ -28,6 +28,7 @@ urlpatterns = [
 
     # Sign In/ Sign Up/ Sign Out
     # url(r'^api/social/', include('rest_framework_social_oauth2.urls')),
+    url(r'^api/auth/', include('rest_auth.urls')),
     # /convert-token (sign in/ sign up)
     # /revoke-token (sign out)
     url(r'^api/restaurant/order/notification/(?P<last_request_time>.+)/$', apis.restaurant_order_notification),
